@@ -1,9 +1,4 @@
-// create two classes: traveler and wagon
-//with the following properties and methods 
-
-
-
-/* let wagon = new Wagon(2)
+ let wagon = new Wagon(2)
 // Create three travelers
 let henrietta = new Traveler('Henrietta')
 let juan = new Traveler('Juan')
@@ -22,4 +17,4 @@ juan.eat()         // Juan eats – as Juan does. 🤣
 juan.eat()         // Juan has run out of food!
 console.log(juan)
 console.log(`Wagon Should Quarantine?: ${ wagon.shouldQuarantine() } – EXPECTED: true. Juan has run out of food and become unhealthy!`)
-console.log(`Wagon's Total Food?: ${ wagon.totalFood() } – EXPECTED: 3.`) */
+console.log(`Wagon's Total Food?: ${ wagon.totalFood() } – EXPECTED: 3.`) 

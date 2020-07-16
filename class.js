@@ -1,4 +1,4 @@
-class traveler {
+class Traveler {
     constructor (name) {
         this.name = name
         this.foodCount = 1
@@ -6,56 +6,81 @@ class traveler {
     }
 
     hunt () {
+    
         this.foodCount += 2
-        return this.foodCount
+
+        // console.log(`${this.name} goes in search of food.`)
+        //console.log(`${this.name} now has a food count of ${this.foodCount}`)
+        
         // increases food unit by 2 (+2)
     }
 
     eat () {
-        this.foodCount -= 1
 
-        if(this.foodCount < 1) {
+        //console.log(`${this.name} decides to eat a portion of his food.`)
+       // console.log(`${this.name} now has a food count of ${this.foodCount}`)
+
+        if( this.foodCount < 1) {
             this.isHealthy = false
+            console.log(`${this.name} isn't feeling too great.`)
+        } else {
+            this.foodCount -= 1
+            this.isHealthy = true
+           // console.log(`${this.name} is looking great!`)
         }
-        // Consumes(decreases) food unit by 1 (-1)
-        // if farmer has no food, the traveler is no longer healthy (isHealthy property is changed to false)
     }
 }
 
-
-class wagon {
+ class Wagon {
     constructor (capacity) {
         this.capacity = capacity
-        this.initialPassengerList = []
+        this.passengerList = []
     }
 
+    join (traveler) {
+    
+        if(this.passengerList.length < this.capacity) {
+
+            this.passengerList.push(traveler)
+           // console.log(`${traveler.name} has joined the wagon!`)
+           // console.log(this.passengerList.length)
+
+        } else if(this.passengerList.length >= this.capacity) {
+
+          // console.log(`${traveler.name} is not able to join! There's no more space!`)
+        }
+    }
+     
     getAvailableSeatCount () {
 
-        let emptySeats = Number(this.capacity) - traveler
-
-        return emptySeats
-
-        //returns the number of empty seats, determined by the capacity set when the wagon was created, subtracted by the number of passengers currently on board.
+        return this.capacity - this.passengerList.length 
+        
     }
-    join (traveler) {
 
 
-        if(!this.capacity) {
-            this.initialPassengerList.push(traveler)
-        }
 
-        return this.initialPassengerList
-
-       // Adds the traveler to the wagon if there is space. If the wagon is already at maximum capacity, don't add them.
-    }
 
     shouldQuarantine () {
 
-       // Returns true if there is at least one unhealthy person in the wagon. Return false if not.
+        for(let index = 0; index < this.passengerList.length; index ++) {
+         let currentPassenger = this.passengerList[index]
+
+         if(currentPassenger.isHealthy === false) {
+            return true
+         }
+
+        }
+        return false
     }
 
     totalFood () {
-      //  Returns the total amount of food among all passengers in the wagon.
+
+        let totalFoodCount = 0
+
+        for(let index = 0; index < this.passengerList.length; index ++) {
+            let currentPassenger = this.passengerList[index]
+
+            return currentPassenger.foodCount + totalFoodCount
+        }
     } 
 }
-
